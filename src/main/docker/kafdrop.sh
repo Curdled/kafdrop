@@ -10,6 +10,12 @@ echo "#+#   #+#  #+#     #+# #+#        #+#    #+# #+#    #+# #+#    #+# #+#    
 echo "###    ### ###     ### ###        #########  ###    ###  ########  ###              ########  "
 echo ""
 
+if [ $PROTOBUF_S3_DESC ]; then
+    echo downloading "aws s3 cp --recursive s3://${PROTOBUF_S3_DESC} /var/protobuf_desc"
+    aws s3 cp --recursive s3://${PROTOBUF_S3_DESC} /var/protobuf_desc
+    ls /var/protobuf_desc
+fi
+
 # Set marathon ports to 0:0 to have marathon assign and pass random port
 if [ $PORT0 ]; then
     JMX_PORT=$PORT0;
